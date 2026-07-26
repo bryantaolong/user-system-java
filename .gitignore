@@ -1,8 +1,2 @@
-.agents/
-AGENTS.md
-
-logstash/
-filebeat/
-
 .idea/
 .vscode/
