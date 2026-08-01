@@ -1,6 +1,6 @@
-// src/models/response/PageResult.ts
+// shared/src/models/response/PageResponse.ts
 
-export interface PageResult<T> {
+export interface PageResponse<T> {
     rows: T[];
     total: number;
     pageNum: number;

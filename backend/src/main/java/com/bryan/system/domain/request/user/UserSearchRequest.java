@@ -30,6 +30,5 @@ public class UserSearchRequest {
     @Size(max = 100, message = "邮箱长度不能超过100个字符")
     private String email;
 
-    @NotNull(message = "状态不能为空")
     private UserStatusEnum status;
 }

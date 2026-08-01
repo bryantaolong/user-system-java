@@ -162,7 +162,7 @@ public class AuthController {
      */
     @GetMapping("/logout")
     @PreAuthorize("isAuthenticated()")
-    public boolean logout() {
-        return authService.logout();
+    public Result<Boolean> logout() {
+        return Result.success(authService.logout());
     }
 }

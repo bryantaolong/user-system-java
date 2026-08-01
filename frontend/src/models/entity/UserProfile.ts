@@ -1,7 +1,7 @@
 export interface UserProfile {
   userId: number;
   realName?: string;
-  gender?: string;
+  gender?: number;
   birthday?: string;
   avatar?: string;
   deleted: number;

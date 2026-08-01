@@ -31,12 +31,16 @@ public class UserExportController {
      * <p>仅管理员可操作。</p>
      *
      * @param response HttpServletResponse
+     * @param fileName 导出文件名（可选）
      */
     @GetMapping
     @PreAuthorize("hasRole('ADMIN')")
     public void exportAllUsers(HttpServletResponse response,
                                @RequestParam(defaultValue = "1") int pageNum,
-                               @RequestParam(defaultValue = "1000") int pageSize) throws IOException {
-        userExportService.exportAllUsers(new UserExportRequest(), response, pageNum, pageSize);
+                               @RequestParam(defaultValue = "1000") int pageSize,
+                               @RequestParam(required = false) String fileName) throws IOException {
+        UserExportRequest exportRequest = new UserExportRequest();
+        exportRequest.setFileName(fileName);
+        userExportService.exportAllUsers(exportRequest, response, pageNum, pageSize);
     }
 }

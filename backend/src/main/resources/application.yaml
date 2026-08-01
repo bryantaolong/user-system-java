@@ -45,7 +45,7 @@ jwt:
 security:
   login-fail-limit: 5              # 登录失败次数限额
   login-fail-reset-minutes: 30     # 登录失败计数重置时间（分钟）
-  account-lock-duration-minutes: 30 # 账号锁定时间（分钟）
+  account-lock-duration-minutes: 60 # 账号锁定时间（分钟）— 与代码中硬编码的1小时保持一致
 
 # CORS 配置
 cors:

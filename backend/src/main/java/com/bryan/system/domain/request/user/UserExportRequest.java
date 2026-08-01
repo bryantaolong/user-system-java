@@ -1,6 +1,6 @@
 package com.bryan.system.domain.request.user;
 
-import lombok.Getter;
+import lombok.Data;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import java.util.List;
  *
  * @author Bryan Long
  */
-@Getter
+@Data
 public class UserExportRequest {
     /**
      * 要导出的字段列表
