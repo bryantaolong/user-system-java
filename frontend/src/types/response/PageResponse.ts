@@ -1,4 +1,4 @@
-// shared/src/models/response/PageResponse.ts
+// shared/src/types/response/PageResponse.ts
 
 export interface PageResponse<T> {
     rows: T[];

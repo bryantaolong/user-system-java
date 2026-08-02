@@ -179,8 +179,8 @@ import * as userApi from '@/api/user'
 import * as userExportApi from '@/api/userExport'
 import * as userRoleApi from '@/api/userRole'
 import * as userProfileApi from '@/api/userProfile'
-import type { SysUser } from '@/models/entity'
-import type { UserRoleOptionVO } from '@/models/vo'
+import type { SysUser } from '@/types/entity'
+import type { UserRoleOptionVO } from '@/types/vo'
 import type { FormInstance, TableColumnData, FieldRule } from '@arco-design/web-vue'
 
 const loading = ref(false)

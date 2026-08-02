@@ -1,5 +1,5 @@
 /**
- * @module src/models/request/user/UserExportRequest.ts
+ * @module src/types/request/user/UserExportRequest.ts
  * @description 定义用户数据导出请求的数据结构。
  */
 export interface UserExportRequest {

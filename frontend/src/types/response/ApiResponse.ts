@@ -1,6 +1,6 @@
-// shared/src/models/response/ApiResponse.ts
+// shared/src/types/response/ApiResponse.ts
 /**
- * @module models/response/ApiResponse
+ * @module types/response/ApiResponse
  * @description 通用后端API响应数据结构。
  * @template T 表示实际业务数据data的类型
  */
