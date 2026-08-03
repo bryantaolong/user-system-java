@@ -6,17 +6,28 @@ This project is a user management system based on Spring Boot 3, supporting user
 
 ## Tech Stack
 
+### Backend
+
 * Java 17
 * Spring Boot 3.5.4
 * MyBatis
-* PostgreSQL 17.x
-* MySQL 8.0.x
+* PostgreSQL 17.x / MySQL 8.0.x
 * Redis
 * Spring Security
 * EasyExcel (Alibaba Excel export)
 * Lombok
 * JJWT (JWT token)
 * Maven 3.9.x
+
+### Frontend
+
+* Vue 3
+* TypeScript
+* Vite
+* Arco Design Vue
+* Vue Router
+* Pinia
+* Axios
 
 ## Project Structure
 
@@ -40,19 +51,31 @@ backend/
         mapper/         # MyBatis mapper xmls
     test/
       java/com/bryan/system/
-        UserSystemApplicationTests.java
   pom.xml
   mvnw
+
 frontend/
   src/
+    api/               # API request modules
+    assets/            # Static assets
+    components/        # Shared components
+    views/             # Page-level Vue components
+    router/            # Vue Router configuration
+    store/             # Pinia state management
+    utils/             # Utility functions
+    App.vue
+    main.ts
   package.json
+  tsconfig.json
+  vite.config.ts
 ```
 
 ## Requirements
 
 * JDK 17+
 * Maven 3.9.9+
-* PostgreSQL 17.x/MySQL 8.0.x
+* Node.js 18+
+* PostgreSQL 17.x / MySQL 8.0.x
 * Redis 6.x or above
 
 ## Configuration
@@ -63,6 +86,8 @@ frontend/
 
 ## Getting Started
 
+### Backend
+
 > Using PostgreSQL as example
 
 1. Initialize the PostgreSQL database by running the schema script:
@@ -70,6 +95,7 @@ frontend/
    ```sh
    psql -U postgres -d postgres -f sql/create_table.sql
    ```
+
 2. Start the Redis service.
 3. Build and run the project with Maven:
 
@@ -86,14 +112,72 @@ frontend/
    java -jar target/user-system-0.0.1-SNAPSHOT.jar
    ```
 
+### Frontend
+
+1. Install dependencies:
+
+   ```sh
+   cd frontend
+   npm install
+   ```
+
+2. Start the development server:
+
+   ```sh
+   npm run dev
+   ```
+
+3. Build for production:
+
+   ```sh
+   npm run build
+   ```
+
+The dev server runs on `http://localhost:5173` by default. Make sure the backend is running and CORS is configured to allow requests from the frontend origin.
+
 ## Main APIs
+
+### Auth
 
 * User registration: `POST /api/auth/register`
 * User login: `POST /api/auth/login`
-* Get all users: `GET /api/user/all` (admin only)
-* Search users: `POST /api/user/search`
-* User update, role change, password update, ban/unban, logical delete, etc. are detailed in [`UserController`](backend/src/main/java/com/bryan/system/controller/user/UserController.java)
-* Export user data: `GET /api/user/export/all`, `POST /api/user/export/field` (admin only)
+* Validate token: `GET /api/auth/validate`
+* Get current user: `GET /api/auth/me`
+* Change password: `PUT /api/auth/password`
+* Delete account: `DELETE /api/auth`
+* Logout: `GET /api/auth/logout`
+
+### Users
+
+* Create user: `POST /api/users` (admin only)
+* Get all users: `GET /api/users` (admin only)
+* Get user by ID: `GET /api/users/:userId` (admin only)
+* Get user by username: `GET /api/users/username/:username` (admin only)
+* Search users: `POST /api/users/search` (admin only)
+* Update user: `PUT /api/users/:userId`
+* Change user roles: `PUT /api/users/roles/:userId` (admin only)
+* Reset password: `PUT /api/users/password/:userId` (admin only)
+* Block user: `PUT /api/users/block/:userId` (admin only)
+* Unblock user: `PUT /api/users/unblock/:userId` (admin only)
+* Delete user: `DELETE /api/users/:userId` (admin only)
+* Export users: `GET /api/users/export` (admin only)
+
+### User Profiles
+
+* Upload avatar: `POST /api/user-profiles/avatar`
+* Get profile by user ID: `GET /api/user-profiles/:userId`
+* Get profile by real name: `GET /api/user-profiles/name/:realName`
+* Get current user profile: `GET /api/user-profiles/me`
+* Update profile: `PUT /api/user-profiles`
+
+### Roles
+
+* List roles: `GET /api/user-roles` (admin only)
+
+### System Logs
+
+* List latest logs: `GET /api/admin/logs` (admin only)
+* List log files: `GET /api/admin/logs/files` (admin only)
 
 ## Notes
 
